@@ -30,10 +30,28 @@
 //
 int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
-	if ( 0==pFrame ){
+	char* data = new char[1];
+	if ( 0==pFrame )
+	{
 		return ERR_PARAM_NULL;
 	}
+	if ( index!=1 || index!=2 )
+		return ERR_BAD_THROW;
+	if( i2c_read(0x90,0,0,data,1)==1 )
+	{// Here, I do not know how to read the datum.
+	 // I do not know how to call the function i2c_read().
+		if ( 1==index )
+		{
 
+			pFrame->first_throw = *data + '0';
+			return 1;
+		}
+		if ( 2==index && 10!=pFrame->first_throw )
+		{
 
+			pFrame->second_throw = *data + '0';
+			return 2;
+		}
+	}
 	return ERR_BAD_THROW;
 }
