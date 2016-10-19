@@ -34,7 +34,10 @@ int play_game()
 	//
 	// show initial score (zero)
 	//
+
 	disp_show_decimal( sum );
+
+
 
 	return -1;
 }
