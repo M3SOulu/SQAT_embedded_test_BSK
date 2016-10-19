@@ -9,6 +9,9 @@
 #include "hardware.h"
 #include "ht16k33.h"
 #include "display.h"
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
 
 int disp_off()
 {
@@ -24,8 +27,8 @@ int disp_off()
 }
 
 static char disp_msg_data[10]={
-		0,0,
-		1,0,
+		0,1,
+		1,1,
 		2,0,
 		3,0,
 		4,0,
@@ -178,6 +181,100 @@ int disp_digit_of(int value,unsigned int n)
 int disp_show_decimal(int value)
 {
 	const int addr = HW_I2C_ADDR_HT16K33;
+	int singleValue = 0;
+
+	int j = 0;
+	for(int i = 0; i < 10; i++) {
+		// gets the value to be show
+		disp_msg_data[0] = convert(get_digit(value, i));
+		j = j+2; // defines index
+
+	}
+
+
+
+	//index
+	disp_msg_data[0] = 0;
+	//value
+	disp_msg_data[1] = 0;
+
+	//index
+	disp_msg_data[2] = 1;
+	//value
+	disp_msg_data[3] = 0;
+
+	//index; turn of semicolon
+	disp_msg_data[4] = 2;
+	//value
+	disp_msg_data[5] = 0;
+
+	//index
+	disp_msg_data[6] = 3;
+	//value
+	disp_msg_data[7] = 0;
+
+
+
+
+
+
 
 	return i2c_write( addr,disp_msg_data,10 );
 }
+
+unsigned int get_digit(unsigned int value, unsigned int position) {
+
+	// determinate amout of digits in unsigned int value
+	unsigned int length = 0;
+	if(value != 0) {
+		length = floor(log10(abs(value))) + 1;
+	} else {
+		length = 1;
+	}
+
+	if(position > length) {
+		return -1;
+	}
+
+	int divisor = 1;
+	for(int i = 0; i < position; i++) {
+		divisor = divisor * 10;
+	}
+
+	if(position == length) {
+		return value % 10;
+	} else {
+		return value / divisor % 10;
+	}
+}
+
+int convert(int value){
+	/*
+	 * singel values
+	 */
+	//0
+	if(value = 0) {
+		return 63;
+	}
+
+	// 1
+	//singleValue = 6;
+	// 2
+	//singleValue = 91;
+	// 3
+	//singleValue = 79;
+	// 4
+	//singleValue = 100;
+	// 5
+	//singleValue = 109;
+	// 6
+	//singleValue = 125;
+	// 7
+	//singleValue = 83;
+	// 8
+	//singleValue = 126;
+	// 9
+	//singleValue = 110;
+}
+
+
