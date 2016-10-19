@@ -26,8 +26,13 @@
 int bsk_valid_frame(bsk_frame_t* pFrame)
 {
 	if ( 0==pFrame ){
+		return 1;
+	}
+	if ( NULL==pFrame ){
 		return -1;
 	}
+	else {
+		return 1;
+	}
 
-	return -1;
 }
