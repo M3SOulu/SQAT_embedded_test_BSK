@@ -24,6 +24,11 @@ typedef struct bsk_game {
 	bsk_frame_t frames[BSK_FRAMES_IN_GAME];
 } bsk_game_t;
 
+typedef struct my_bsk_game {
+	//bsk_frame_t frames[BSK_FRAMES_IN_GAME];
+	unsigned char frames[BSK_FRAMES_IN_GAME] = {0};
+} my_bsk_game_t;
+
 int bsk_get_throw(bsk_frame_t* pFrame,int index);
 int bsk_calculate(bsk_game_t* pGame,int frames);
 int bsk_valid_frame(bsk_frame_t* pFrame);
