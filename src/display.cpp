@@ -166,9 +166,13 @@ const char digit_segments[10]={
 //
 int disp_digit_of(int value,unsigned int n)
 {
-	return -1;
+	int result;
+	for (int i = 0; i < n + 1; i++) {
+		result = value % 10;
+		value = value / 10;
+	}
+	return result;
 }
-
 
 //
 // map decimal numbers of "value" to digits in the
@@ -178,6 +182,39 @@ int disp_digit_of(int value,unsigned int n)
 int disp_show_decimal(int value)
 {
 	const int addr = HW_I2C_ADDR_HT16K33;
-
+	int aux[4] = {disp_digit_of(value, 0),disp_digit_of(value, 1), disp_digit_of(value, 2),disp_digit_of(value, 3)};
+	for (int i = 0; i < 4; i++) {
+		if (aux[i] == 0) {
+			aux[i] = 63;
+		}
+		else if (aux[i] == 1) {
+			aux[i] = 6;
+		}
+		else if (aux[i] == 2) {
+			aux[i] = 91;
+		}
+		else if (aux[i] == 3) {
+			aux[i] = 79;
+		}
+		else if (aux[i] == 4) {
+			aux[i] = 92;
+		}
+		else if (aux[i] == 5) {
+			aux[i] = 109;
+		}
+		else if (aux[i] == 6) {
+			aux[i] = 125;
+		}
+		else if (aux[i] == 7) {
+			aux[i] = 7;
+		}
+		else if (aux[i] == 8) {
+			aux[i] = 127;
+		}
+		else if (aux[i] == 9) {
+			aux[i] = 111;
+		}
+	}
+	disp_msg_data = {	0, aux[0],	1,aux[1],	2,0,	3,aux[2],	4,aux[3],};
 	return i2c_write( addr,disp_msg_data,10 );
 }

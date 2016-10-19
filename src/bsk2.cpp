@@ -26,6 +26,13 @@ int bsk_calculate(bsk_game_t* pGame,int frames)
 		return ERR_PARAM_NULL;
 	}
 	int sum=0;
-
-	return -1;
+	for (int i = 0; i < frames; i++) {
+		if (bsk_get_throw(pGame->frames[i], 0) < 10) {
+			sum = sum + pGame->frames[i].first_throw + pGame->frames[i].second_throw;
+		}
+		else {
+			sum = sum + pGame->frames[i].first_throw;
+		}
+	}
+	return sum;
 }
