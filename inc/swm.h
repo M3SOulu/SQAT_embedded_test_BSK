@@ -8,6 +8,7 @@
 #ifndef SWM_H_
 #define SWM_H_
 
+#include "chip.h"
 #define SWM_RC_OK           0
 #define SWM_RC_PARAM_ERROR -1
 //
