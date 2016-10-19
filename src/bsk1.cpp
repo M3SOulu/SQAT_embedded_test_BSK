@@ -34,6 +34,20 @@ int bsk_get_throw(bsk_frame_t* pFrame,int index)
 		return ERR_PARAM_NULL;
 	}
 
+	if ( index!=1 || index!=2 ){
+		return ERR_BAD_THROW;
+	}
+
+	if ( index==1 ){
+		// Read first throw
+		return pFrame->first_throw;
+	}
+
+	if ( index==2 ){
+		// Read second throw
+		return pFrame->second_throw;
+	}
+
 
 	return ERR_BAD_THROW;
 }
