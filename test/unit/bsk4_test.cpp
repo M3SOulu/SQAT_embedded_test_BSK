@@ -25,6 +25,7 @@ int i2c_read(int address,
 	int bsk_get_throw(bsk_frame_t* pFrame,int index);
 	int bsk_calculate(bsk_game_t* pGame,int frames);
 	int bsk_valid_frame(bsk_frame_t* pFrame);
+	int my_bsk_get_throw(unsigned char* frame, int index);
 	//
 	// target code is included instead of (direct) compilation:
 	//   This allows to cut the dependencies (such as I2C_write above)
@@ -119,11 +120,33 @@ int BSK4_test_namespace::i2c_read(int address,
 		char* reg,int reglen,
 		char* buffer,int length)
 {
-	unittest_BSK4::mRecorded_i2c_read_address = address;
+	static int data_index = 0;
+
+	// no negative nums here!
+	unsigned char dummydata[] = {
+			1,2,3,4,5,6
+	};
+
+	if (address != HW_BSK_PIN_COUNTER)
+		goto err;
+
+	if (0 != reg || 0 != reglen)
+		goto err;
+
+	for (int i = 0; i < length; i++) {
+		buffer[i] = dummydata[data_index];
+		data_index++;
+	}
+
+	return 1;
+
+	/*unittest_BSK4::mRecorded_i2c_read_address = address;
 	if ( 0!=buffer && length>0 ){
 		buffer[0]=unittest_BSK4::mPlay_i2c_read_value;
 		return 1;
-	}
+	}*/
+
+err:
 	return -1;
 }
 
@@ -132,10 +155,11 @@ int BSK4_test_namespace::i2c_read(int address,
 //
 int BSK4_test_namespace::bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
-	//
-	// TODO: complete mock
-	//
 	return 0;
+}
+
+int BSK4_test_namespace::my_bsk_get_throw(unsigned char* frame, int index) {
+
 }
 
 //
@@ -193,4 +217,17 @@ TEST_F( unittest_BSK4, play_game )
 	EXPECT_EQ( -1, mRc );
 
 	EXPECT_EQ( 0, getRecorded_Disp_Show_Decimal_Value() );
+
+}
+
+TEST_F( unittest_BSK4, i2c_testdata_read )
+{
+	char data = 0;
+
+	EXPECT_EQ(1, BSK4_test_namespace::i2c_read(HW_BSK_PIN_COUNTER, 0,0, &data, 1));
+	EXPECT_EQ(1, data);
+	EXPECT_EQ(1, BSK4_test_namespace::i2c_read(HW_BSK_PIN_COUNTER, 0,0, &data, 1));
+	EXPECT_EQ(2, data);
+	EXPECT_EQ(1, BSK4_test_namespace::i2c_read(HW_BSK_PIN_COUNTER, 0,0, &data, 1));
+	EXPECT_EQ(3, data);
 }
