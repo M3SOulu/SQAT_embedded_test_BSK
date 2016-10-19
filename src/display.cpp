@@ -179,5 +179,15 @@ int disp_show_decimal(int value)
 {
 	const int addr = HW_I2C_ADDR_HT16K33;
 
-	return i2c_write( addr,disp_msg_data,10 );
+
+	if(value == 0){
+		char x[] = {0,0,1,0,2,0,3,0,4,63};
+		return i2c_write( addr,x,10 );
+	}else{
+		char x[] = {0,127,1,0,2,0,3,0,4,0};
+		return i2c_write( addr,x,10 );
+	}
+	//disp_msg_data
+
+
 }

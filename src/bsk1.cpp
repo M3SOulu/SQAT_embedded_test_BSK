@@ -32,7 +32,19 @@ int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
 	if ( 0==pFrame ){
 		return ERR_PARAM_NULL;
+	}else if(index == 1){
+		char buffer;
+		i2c_read(0x90, 0,0,&buffer, 1);
+		pFrame->first_throw = buffer;
+		return 1;
+	}else if (index == 2){
+		char buffer;
+		i2c_read(0x90, 0,0, &buffer, 1);
+		pFrame->second_throw = buffer;
+		return 2;
 	}
+
+
 
 
 	return ERR_BAD_THROW;
