@@ -30,10 +30,25 @@
 //
 int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
+	char data;
+
 	if ( 0==pFrame ){
 		return ERR_PARAM_NULL;
 	}
 
+	int status = i2c_read(0x90,0,0,&data,1);
+	if (status != 1) {
+		return ERR_READ_FAILED;
+	}
+	int value = (int)data;
+
+	if (index == 1) {
+		pFrame->first_throw = value;
+		return 1;
+	} else if (index == 2) {
+		pFrame->second_throw = value;
+		return 2;
+	}
 
 	return ERR_BAD_THROW;
 }

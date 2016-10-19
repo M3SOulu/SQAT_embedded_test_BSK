@@ -29,5 +29,12 @@ int bsk_valid_frame(bsk_frame_t* pFrame)
 		return -1;
 	}
 
-	return -1;
+	// Bad sum
+	int sum = pFrame->first_throw + pFrame->second_throw;
+	if (sum < 0 || sum > 10) {
+		return 1;
+	}
+
+	// All good
+	return 0;
 }
