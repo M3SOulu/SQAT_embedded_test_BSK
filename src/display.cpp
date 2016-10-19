@@ -109,6 +109,14 @@ int disp_on(int alloff)
 #define SEGMENTS_0 63
 // 1 (one)  is 2+4 = 6
 #define SEGMENTS_1 6
+#define SEGMENTS_2 (1+2+64+16+8)
+#define SEGMENTS_3 (1+2+64+4+8)
+#define SEGMENTS_4 (32+64+2+4)
+#define SEGMENTS_5 (1+32+64+4+8)
+#define SEGMENTS_6 (1+32+16+8+4+64)
+#define SEGMENTS_7 (1+2+4)
+#define SEGMENTS_8 (1+2+4+8+16+32+64)
+#define SEGMENTS_9 (1+2+32+64+4+8)
 
 //
 // number segments are displayed with combination
@@ -124,18 +132,6 @@ int disp_on(int alloff)
 // 16     4
 //   8 8 8
 //
-//
-// define these (correctly), now the all display as "-"
-//
-
-#define SEGMENTS_2 64
-#define SEGMENTS_3 64
-#define SEGMENTS_4 64
-#define SEGMENTS_5 64
-#define SEGMENTS_6 64
-#define SEGMENTS_7 64
-#define SEGMENTS_8 64
-#define SEGMENTS_9 64
 
 //
 // mapping of number to its segment data:
@@ -166,6 +162,7 @@ const char digit_segments[10]={
 //
 int disp_digit_of(int value,unsigned int n)
 {
+
 	return -1;
 }
 
