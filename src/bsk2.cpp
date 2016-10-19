@@ -27,5 +27,8 @@ int bsk_calculate(bsk_game_t* pGame,int frames)
 	}
 	int sum=0;
 
-	return -1;
+	for (int i = 0; i < frames; ++i) {
+		sum += pGame->frames[i].first_throw+ pGame->frames[i].second_throw;
+	}
+	return sum;
 }

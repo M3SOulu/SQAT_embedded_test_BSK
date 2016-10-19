@@ -14,8 +14,8 @@
 #define ERR_BAD_FRAME   -4
 
 typedef struct bsk_frame {
-	int first_throw;
-	int second_throw;
+	int first_throw = 0;
+	int second_throw = 0;
 } bsk_frame_t;
 
 #define BSK_FRAMES_IN_GAME 10
