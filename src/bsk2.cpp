@@ -27,5 +27,11 @@ int bsk_calculate(bsk_game_t* pGame,int frames)
 	}
 	int sum=0;
 
-	return -1;
+	//for(int i = 0; i < frames[].length; i++){
+
+	if(frames == 1){
+		sum = sum++;
+	}
+	return sum;
+	//}
 }
