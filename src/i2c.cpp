@@ -131,7 +131,7 @@ int i2c_read(int address,
 		i2c_data_t i2c_data;
 		i2c_data.address=address;
 		i2c_data.reg=reg;
-		i2c_data.reglen =reglen;
+		i2c_data.reglen = reglen;
 		i2c_data.buffer = buffer;
 		i2c_data.length = length;
 		return i2c_read_p( &i2c_data );
