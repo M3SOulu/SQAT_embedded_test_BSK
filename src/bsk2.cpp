@@ -26,6 +26,6 @@ int bsk_calculate(bsk_game_t* pGame,int frames)
 		return ERR_PARAM_NULL;
 	}
 	int sum=0;
-
+	sum = frames;
 	return -1;
 }

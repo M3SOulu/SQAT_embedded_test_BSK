@@ -33,7 +33,13 @@ int bsk_get_throw(bsk_frame_t* pFrame,int index)
 	if ( 0==pFrame ){
 		return ERR_PARAM_NULL;
 	}
-
-
-	return ERR_BAD_THROW;
+	if (index!=1 || index!=2){
+		return ERR_BAD_THROW;
+	}
+	if (index==1){
+		return 1;
+	}
+	if (index==2){
+		return 2;
+	}
 }
