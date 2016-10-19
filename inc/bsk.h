@@ -16,6 +16,7 @@
 typedef struct bsk_frame {
 	int first_throw;
 	int second_throw;
+	int frame_score;
 } bsk_frame_t;
 
 #define BSK_FRAMES_IN_GAME 10

@@ -147,5 +147,6 @@ TEST_F( unittest_BSK3, frame_is_invalid )
 	frame.second_throw = 999;
 
 	mRc = BSK3_test_namespace::bsk_valid_frame( &frame );
-	EXPECT_EQ( -1, mRc );
+	EXPECT_EQ( 1, mRc );
+
 }

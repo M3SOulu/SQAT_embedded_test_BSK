@@ -155,7 +155,7 @@ TEST_F( unittest_DISP, disp_show_decimal_value_0 )
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(3) );
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(5) );
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(7) );
-	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(9) );
+	EXPECT_EQ( SEGMENTS_0, get_i2c_buffer_char(9) );
 }
 
 //
@@ -172,5 +172,5 @@ TEST_F( unittest_DISP, disp_show_decimal_value_1 )
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(3) );
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(5) );
 	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(7) );
-	EXPECT_EQ( SEGMENT_NONE, get_i2c_buffer_char(9) );
+	EXPECT_EQ( SEGMENTS_1, get_i2c_buffer_char(9) );
 }
