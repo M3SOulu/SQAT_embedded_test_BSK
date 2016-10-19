@@ -12,20 +12,20 @@
 #include "display.h"
 
 namespace DISP_test_namespace {
-	//
-	// I2C_write dependency is put into the namespace to FORCE the stub code
-	//   in use (and not the real)
-	//
-	int i2c_write(int address,const char* buffer,int length);
-	//
-	// delay dependency
-	//
-	void delay();
-	//
-	// target code is included instead of (direct) compilation:
-	//   This allows to cut the dependencies (such as I2C_write above)
-	//
-	#include "../src/display.cpp"
+//
+// I2C_write dependency is put into the namespace to FORCE the stub code
+//   in use (and not the real)
+//
+int i2c_write(int address,const char* buffer,int length);
+//
+// delay dependency
+//
+void delay();
+//
+// target code is included instead of (direct) compilation:
+//   This allows to cut the dependencies (such as I2C_write above)
+//
+#include "../src/display.cpp"
 }
 
 using ::testing::Test;
@@ -42,9 +42,9 @@ public:
 	// constructor just resets attributes to some default values
 	//
 	unittest_DISP()
-	{
+{
 		mRc = -1;
-	}
+}
 	virtual ~unittest_DISP(){}
 protected:
 	//

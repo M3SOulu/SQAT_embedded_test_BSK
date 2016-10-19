@@ -34,11 +34,11 @@ public:
 	// constructor just resets attributes to some default values
 	//
 	ut_SWM()
-	{
+{
 		mRc = -1;
 		pLPC_SWM = 0;
 		pLPC_SYSCTL = 0;
-	}
+}
 	virtual ~ut_SWM(){}
 protected:
 	//

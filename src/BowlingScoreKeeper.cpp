@@ -6,7 +6,7 @@
  Copyright   : $(copyright)
  Description : main definition
 ===============================================================================
-*/
+ */
 
 #if defined (__USE_LPCOPEN)
 #if defined(NO_BOARD_LIB)
@@ -27,14 +27,14 @@
 int main(void)
 {
 #if defined (__USE_LPCOPEN)
-    SystemCoreClockUpdate();
+	SystemCoreClockUpdate();
 #endif
 
-    // Configuration of SWM and I2C
-    swm_config_i2c( LPC_SYSCON, LPC_SWM );
-    i2c_reset();
+	// Configuration of SWM and I2C
+	swm_config_i2c( LPC_SYSCON, LPC_SWM );
+	i2c_reset();
 
-    // Display setup
+	// Display setup
 	disp_on( DISP_SHOW_NONE );
 	disp_reset( DISP_SHOW_NONE );
 
@@ -43,5 +43,5 @@ int main(void)
 		play_game();
 		delay_1s();
 	}
-    return 0 ;
+	return 0 ;
 }

@@ -12,22 +12,22 @@
 #include "bsk.h"
 
 namespace BSK1_test_namespace {
-	//
-	// dependency injections
-	//
+//
+// dependency injections
+//
 int disp_show_decimal( int );
 int i2c_read(int address,
 		char* reg,int reglen,
 		char* buffer,int length);
-	//
-	// delay dependency
-	//
+//
+// delay dependency
+//
 //subroutine_signature();
-	//
-	// target code is included instead of (direct) compilation:
-	//   This allows to cut the dependencies (such as I2C_write above)
-	//
-	#include "../src/bsk1.cpp"
+//
+// target code is included instead of (direct) compilation:
+//   This allows to cut the dependencies (such as I2C_write above)
+//
+#include "../src/bsk1.cpp"
 }
 
 using ::testing::Test;
@@ -44,9 +44,9 @@ public:
 	// constructor just resets attributes to some default values
 	//
 	unittest_BSK1()
-	{
+{
 		mRc = -1;
-	}
+}
 	virtual ~unittest_BSK1(){}
 protected:
 	//
