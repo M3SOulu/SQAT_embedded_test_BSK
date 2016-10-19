@@ -137,15 +137,25 @@ TEST_F( unittest_BSK3, test_constructor )
  *
  **********************************************************************/
 
+TEST_F( unittest_BSK3, frame_is_valid_10_0 )
+{
+	bsk_frame_t frame;
+	frame.first_throw = 10;
+	frame.second_throw = 0;
+
+	mRc = BSK3_test_namespace::bsk_valid_frame( &frame );
+	EXPECT_EQ( 1, mRc );
+}
+
 //
 // test matches the empty implementation
 //
-TEST_F( unittest_BSK3, frame_is_invalid )
+TEST_F( unittest_BSK3, frame_is_invalid_999_999 )
 {
 	bsk_frame_t frame;
 	frame.first_throw = 999;
 	frame.second_throw = 999;
 
 	mRc = BSK3_test_namespace::bsk_valid_frame( &frame );
-	EXPECT_EQ( -1, mRc );
+	EXPECT_EQ( ERR_BAD_FRAME, mRc );
 }

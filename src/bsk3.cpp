@@ -28,6 +28,8 @@ int bsk_valid_frame(bsk_frame_t* pFrame)
 	if ( 0==pFrame ){
 		return -1;
 	}
-
-	return -1;
+    if (pFrame->first_throw+pFrame->second_throw > 10)
+    	return ERR_BAD_FRAME;
+    else
+    	return 1;
 }

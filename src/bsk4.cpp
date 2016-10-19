@@ -35,6 +35,11 @@ int play_game()
 	// show initial score (zero)
 	//
 	disp_show_decimal( sum );
-
+	for (int i=0;i>10;i++)
+	{
+		game.frames[i].first_throw=1;
+		delay_1s();
+		game.frames[i].first_throw=2;
+	}
 	return -1;
 }
