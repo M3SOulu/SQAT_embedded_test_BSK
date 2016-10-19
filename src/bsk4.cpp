@@ -34,7 +34,11 @@ int play_game()
 	//
 	// show initial score (zero)
 	//
+	sum = bsk_calculate(bsk_game, 1);
 	disp_show_decimal( sum );
+	//sum = bsk_calculate(bsk_game, 1);
+
+	//delay_1s();
 
 	return -1;
 }

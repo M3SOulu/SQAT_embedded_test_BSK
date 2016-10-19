@@ -22,10 +22,17 @@
 //
 int bsk_calculate(bsk_game_t* pGame,int frames)
 {
+	int sum = 0;
 	if ( 0==pGame ){
 		return ERR_PARAM_NULL;
 	}
-	int sum=0;
+	/*int frame = bsk_get_throw(bsk_frame_t*, ); //No idea how to call these
+	if (frame == 1) {
+	//sum = (*pGame).frames();
+		return sum;
+	}*/
 
-	return -1;
+
+
+	return sum;
 }

@@ -166,7 +166,20 @@ const char digit_segments[10]={
 //
 int disp_digit_of(int value,unsigned int n)
 {
-	return -1;
+	  long end = 1;
+	  while (n != 0){
+		  end *= value;
+		  n--;
+	  }
+
+	  if ((end % 10) != 0){
+	  return (end % 10);
+	  }
+
+	  else{
+	  return -1;
+	  }
+
 }
 
 
