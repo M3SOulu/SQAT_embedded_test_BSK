@@ -30,10 +30,28 @@
 //
 int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
+
 	if ( 0==pFrame ){
 		return ERR_PARAM_NULL;
 	}
+	if(index != 1 || index!= 2){
+		return ERR_BAD_THROW;
+	}else if(index == 1){ // read the first throw
+
+		//scanf("%d", pFrame->first_throw);
+	}else if(index ==2){// read the first throw
+		//scanf("%d", &pFrame->second_throw)
+	}
 
 
-	return ERR_BAD_THROW;
+	int address;
+	char* reg;
+	int reglen;
+	char* buffer;
+	int length;
+
+	if(i2c_read(address, reg, reglen, buffer, length)!= 1){
+		ERR_READ_FAILED;
+	}
+
 }

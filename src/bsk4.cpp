@@ -30,6 +30,7 @@ int play_game()
 	int sum=0;
 	bsk_game_t bsk_game;
 	int f=0;
+	DISP_SHOW_ALL;
 
 	//
 	// show initial score (zero)
