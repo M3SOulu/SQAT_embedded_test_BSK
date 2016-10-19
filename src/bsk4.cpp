@@ -30,11 +30,14 @@ int play_game()
 	int sum=0;
 	bsk_game_t bsk_game;
 	int f=0;
-
 	//
 	// show initial score (zero)
 	//
 	disp_show_decimal( sum );
+
+	for (f=0; f<=10; f++){
+		int sum =+ 10;
+	}
 
 	return -1;
 }

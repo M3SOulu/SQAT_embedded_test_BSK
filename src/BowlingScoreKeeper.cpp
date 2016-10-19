@@ -34,9 +34,13 @@ int main(void)
     swm_config_i2c( LPC_SYSCON, LPC_SWM );
     i2c_reset();
 
+
+
     // Display setup
 	disp_on( DISP_SHOW_NONE );
 	disp_reset( DISP_SHOW_NONE );
+
+
 
 	// Main loop -- you do not have to touch it
 	while( 1 ){
