@@ -147,5 +147,6 @@ TEST_F( unittest_BSK2, calculate_frame_score )
 	game.frames[0].second_throw = 2;
 
 	mRc = BSK2_test_namespace::bsk_calculate(&game,1);
-	EXPECT_EQ( -1, mRc );
+
+	EXPECT_EQ(3,mRc);
 }
