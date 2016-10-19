@@ -36,5 +36,7 @@ int play_game()
 	//
 	disp_show_decimal( sum );
 
+
+
 	return -1;
 }

@@ -128,14 +128,14 @@ int disp_on(int alloff)
 // define these (correctly), now the all display as "-"
 //
 
-#define SEGMENTS_2 64
-#define SEGMENTS_3 64
-#define SEGMENTS_4 64
-#define SEGMENTS_5 64
-#define SEGMENTS_6 64
-#define SEGMENTS_7 64
-#define SEGMENTS_8 64
-#define SEGMENTS_9 64
+#define SEGMENTS_2 91
+#define SEGMENTS_3 79
+#define SEGMENTS_4 102
+#define SEGMENTS_5 109
+#define SEGMENTS_6 125
+#define SEGMENTS_7 7
+#define SEGMENTS_8 127
+#define SEGMENTS_9 111
 
 //
 // mapping of number to its segment data:
@@ -178,6 +178,11 @@ int disp_digit_of(int value,unsigned int n)
 int disp_show_decimal(int value)
 {
 	const int addr = HW_I2C_ADDR_HT16K33;
+	disp_msg_data[1] = SEGMENTS_NONE;
+		disp_msg_data[3] = SEGMENTS_NONE;
+		disp_msg_data[5] = SEGMENTS_NONE;
+		disp_msg_data[7] = SEGMENTS_NONE;
+		disp_msg_data[9] = digit_segments[value];
 
 	return i2c_write( addr,disp_msg_data,10 );
 }

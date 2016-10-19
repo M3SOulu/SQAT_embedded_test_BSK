@@ -153,11 +153,11 @@ TEST_F( unittest_BSK1, get_data_for_throw )
 
 	set_next_i2c_read_value( 3 );
 	mRc = BSK1_test_namespace::bsk_get_throw( &frame,1 );
-	EXPECT_EQ( -2, mRc );
-	EXPECT_EQ( 0, frame.first_throw );
+	EXPECT_EQ( 1, mRc );
+	EXPECT_EQ( 3, frame.first_throw );
 
 	set_next_i2c_read_value( 5 );
 	mRc = BSK1_test_namespace::bsk_get_throw( &frame, 2 );
-	EXPECT_EQ( -2, mRc );
-	EXPECT_EQ( 0, frame.second_throw );
+	EXPECT_EQ( 2, mRc );
+	EXPECT_EQ( 5, frame.second_throw );
 }

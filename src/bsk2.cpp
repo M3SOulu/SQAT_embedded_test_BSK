@@ -25,7 +25,8 @@ int bsk_calculate(bsk_game_t* pGame,int frames)
 	if ( 0==pGame ){
 		return ERR_PARAM_NULL;
 	}
-	int sum=0;
+	int sum=pGame->frames[0].first_throw+pGame->frames[0].second_throw;
+	pGame->frames[0].frame_score=sum;
 
 	return -1;
 }

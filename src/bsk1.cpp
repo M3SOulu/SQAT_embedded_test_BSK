@@ -30,10 +30,26 @@
 //
 int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
+	char read_throw;
+	int length = i2c_read(HW_BSK_PIN_COUNTER, 0, 0, &read_throw, 1);
+
 	if ( 0==pFrame ){
 		return ERR_PARAM_NULL;
 	}
 
+	if(length!=1){
+		return ERR_READ_FAILED;
+	}
 
-	return ERR_BAD_THROW;
+	if(index==1){
+		pFrame->first_throw=read_throw;
+		return 1;
+	}else if(index==2){
+		pFrame->second_throw=read_throw;
+		return 2;
+	}else{
+		return ERR_BAD_THROW;
+	}
+
+
 }
