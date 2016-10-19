@@ -12,7 +12,6 @@
 int main(int argc,char** argv)
 {
 	int rc=-1;
-
 	::testing::InitGoogleTest(&argc,argv);
 	rc=RUN_ALL_TESTS();
 	return rc;
