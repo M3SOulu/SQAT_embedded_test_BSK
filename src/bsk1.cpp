@@ -30,10 +30,18 @@
 //
 int bsk_get_throw(bsk_frame_t* pFrame,int index)
 {
-	if ( 0==pFrame ){
+	if (0==pFrame ){
 		return ERR_PARAM_NULL;
 	}
-
-
-	return ERR_BAD_THROW;
+	else if (index == 1) {
+		i2c_read(0x90, 0, 0, pFrame->first_throw, 1);
+		return pFrame->first_throw;
+	}
+	else if (index == 2) {
+		i2c_read(0x90, 0, 0, pFrame->second_throw, 1);
+		return pFrame->second_throw;
+	}
+	else {
+		return ERR_BAD_THROW;
+	}
 }

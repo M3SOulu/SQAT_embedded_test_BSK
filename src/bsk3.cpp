@@ -29,5 +29,10 @@ int bsk_valid_frame(bsk_frame_t* pFrame)
 		return -1;
 	}
 
-	return -1;
+	if ((pFrame->first_throw + pFrame->second_throw) < 10) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
 }

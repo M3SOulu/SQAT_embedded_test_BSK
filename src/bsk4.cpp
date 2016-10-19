@@ -30,11 +30,28 @@ int play_game()
 	int sum=0;
 	bsk_game_t bsk_game;
 	int f=0;
+	const int FRAMES = 10;
+	int aux;
 
 	//
 	// show initial score (zero)
 	//
-	disp_show_decimal( sum );
+	disp_show_decimal(sum);
 
-	return -1;
+	for (int i = 0; i < FRAMES; i++) {
+		bsk_get_throw(bsk_game.frames[i], 0);
+		bsk_get_throw(bsk_game.frames[i], 1);
+		if (bsk_valid_frame(bsk_game.frames[i]) == 0) {
+			sum = sum + bsk_get_throw(bbsk_game.frames[i], 0);
+			disp_show_decimal(sum);
+			delay_ls();
+			if (bsk_get_throw(bbsk_game.frames[i], 0) < 10) {
+				sum = sum + bsk_get_throw(bbsk_game.frames[i], 1);
+				disp_show_decimal(sum);
+				delay_ls();
+			}
+		}
+	}
+
+	return sum;
 }
